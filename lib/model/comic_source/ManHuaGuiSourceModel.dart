@@ -72,7 +72,7 @@ class ManHuaGuiSourceModel extends BaseSourceModel {
       }
       var response =
           await UniversalRequestModel.manHuaGuiRequestHandler.getComic(comicId);
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var soup = BeautifulSoup(response.data);
         var contList = soup.find(id: '.cont-list');
         List authors = contList.children[3].children[1].children
@@ -292,7 +292,7 @@ class ManHuaGuiSourceModel extends BaseSourceModel {
       }
       var response =
           await UniversalRequestModel.manHuaGuiRequestHandler.search(keyword);
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var soup = BeautifulSoup(response.data);
         List<SearchResult> list = [];
         var content = soup.find(id: '#detail').children;
@@ -343,7 +343,7 @@ class ManHuaGuiSourceModel extends BaseSourceModel {
       try {
         var response =
             await UniversalRequestModel.manHuaGuiRequestHandler.getSubscribe();
-        if ((response.statusCode == 200||response.statusCode == 304)) {
+        if ((response.statusCode == 200 || response.statusCode == 304)) {
           var soup = BeautifulSoup(response.data);
           var list = soup.find(id: '#detail').children;
           if (list.isEmpty) {
@@ -411,7 +411,7 @@ class ManHuaGuiHompageHandler extends BaseHomePageHandler {
       }
       var response = await UniversalRequestModel.manHuaGuiRequestHandler
           .getAuthor(authorId);
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var soup = BeautifulSoup(response.data);
         List<RankingComic> list = [];
         var content = soup.find(id: '#detail').children;
@@ -458,7 +458,7 @@ class ManHuaGuiHompageHandler extends BaseHomePageHandler {
       }
       var response = await UniversalRequestModel.manHuaGuiRequestHandler
           .getCategoryDetail("");
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var soup = BeautifulSoup(response.data);
         List<CategoryModel> list = [];
         var content = soup.find(id: '.cat-list').children;
@@ -468,7 +468,8 @@ class ManHuaGuiHompageHandler extends BaseHomePageHandler {
               .replaceAll("/list/", '')
               .replaceAll("/", "");
           list.add(CategoryModel(
-              cover: "https://alicdn2.mangafunc.fun:12001/static/websiteV2/jpg/loading.png",
+              cover:
+                  "https://alicdn2.mangafunc.fun:12001/static/websiteV2/jpg/loading.png",
               title: title,
               categoryId: categoryId,
               headers: {"referer": "https://www.copymanga.com/"},
@@ -493,7 +494,7 @@ class ManHuaGuiHompageHandler extends BaseHomePageHandler {
       }
       var response = await UniversalRequestModel.manHuaGuiRequestHandler
           .getCategoryDetail(categoryId, page: page, popular: popular);
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var soup = BeautifulSoup(response.data);
         List<RankingComic> list = [];
         var content = soup.find(id: '#detail').children;
@@ -537,7 +538,7 @@ class ManHuaGuiHompageHandler extends BaseHomePageHandler {
       }
       var response =
           await UniversalRequestModel.manHuaGuiRequestHandler.getHompage();
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var soup = BeautifulSoup(response.data);
         List<HomePageCardModel> list = [];
         var titles = soup.findAll(".bar");
@@ -585,7 +586,7 @@ class ManHuaGuiHompageHandler extends BaseHomePageHandler {
       }
       var response = await UniversalRequestModel.manHuaGuiRequestHandler
           .getLatestUpdate(page: page);
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var soup = BeautifulSoup(response.data);
         List<RankingComic> list = [];
         var content = soup.find(id: '#detail').children;
@@ -632,7 +633,7 @@ class ManHuaGuiHompageHandler extends BaseHomePageHandler {
       }
       var response = await UniversalRequestModel.manHuaGuiRequestHandler
           .getRankingList(page: page);
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var soup = BeautifulSoup(response.data);
         List<RankingComic> list = [];
         var content = soup.find(id: '#detail').children;
@@ -702,7 +703,7 @@ class ManHuaGuiUserConfig extends UserConfig {
         }
         var response =
             await UniversalRequestModel.manHuaGuiRequestHandler.getLoginInfo();
-        if ((response.statusCode == 200||response.statusCode == 304)) {
+        if ((response.statusCode == 200 || response.statusCode == 304)) {
           var responseData = jsonDecode(response.data.toString());
           if (responseData['status'] == 1) {
             _userId = responseData['username'];
@@ -874,7 +875,7 @@ class ManHuaGuiUserConfig extends UserConfig {
         try {
           var response = await UniversalRequestModel.manHuaGuiRequestHandler
               .getLoginInfo();
-          if ((response.statusCode == 200||response.statusCode == 304)) {
+          if ((response.statusCode == 200 || response.statusCode == 304)) {
             var responseData = jsonDecode(response.data.toString());
             if (responseData['status'] == 1) {
               _userId = responseData['username'];
@@ -1164,7 +1165,7 @@ class ManHuaGuiComicDetail extends ComicDetail {
     try {
       var response = await UniversalRequestModel.manHuaGuiRequestHandler
           .getIfSubscribe(comicId);
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var data = jsonDecode(response.data);
         if (data['status'] == 1) {
           _isSubscribed = true;
@@ -1185,7 +1186,7 @@ class ManHuaGuiComicDetail extends ComicDetail {
     try {
       var response = await UniversalRequestModel.manHuaGuiRequestHandler
           .getComicComments(comicId, page);
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         response.data = jsonDecode(response.data);
         var idList = response.data['commentIds'];
         comments.addAll(response.data['comments']);
@@ -1302,7 +1303,7 @@ class ManHuaGuiComic extends Comic {
       }
       var response = await UniversalRequestModel.manHuaGuiRequestHandler
           .getChapter(comicId, chapterId);
-      if ((response.statusCode == 200||response.statusCode == 304)) {
+      if ((response.statusCode == 200 || response.statusCode == 304)) {
         var soup = BeautifulSoup(response.data);
         var scripts = soup.findAll('script');
         List<String> result = await ToolMethods.evalList([
@@ -1310,12 +1311,11 @@ class ManHuaGuiComic extends Comic {
           'SMH={};SMH.reader=function(e,t){e;t;return {preInit:function(){return JSON.stringify(e);}}}',
           scripts[3].text
         ], url: 'about:blank');
-
-        var data;
-        if(Platform.isIOS){
-          data = jsonDecode(result.last);
-        } else {
+        Map<String, dynamic> data;
+        if (Platform.isAndroid) {
           data = jsonDecode(jsonDecode(result.last));
+        } else {
+          data = jsonDecode(result.last);
         }
 
         _title = data['chapterTitle'];

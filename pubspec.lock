@@ -337,6 +337,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_adapter:
+    dependency: "direct main"
+    description:
+      name: flutter_adapter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   flutter_archive:
     dependency: "direct main"
     description:
@@ -1063,6 +1070,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0+1"
+  wakelock_windows:
+    dependency: transitive
+    description:
+      name: wakelock_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0+2"
   webview_flutter:
     dependency: transitive
     description:
